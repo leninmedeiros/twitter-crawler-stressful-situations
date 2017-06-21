@@ -1,0 +1,4 @@
+[TwitterConsumerKey]
+twitter_consumer_key: <PUT YOUR TWITTER CONSUMER KEY HERE>
+[TwitterConsumerSecret]
+twitter_consumer_secret: <PUT YOUR TWITTER CONSUMER SECRET HERE>
