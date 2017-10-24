@@ -99,3 +99,16 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Twitter Crawler Stressful Situations Configuration File
+.config
+
+# csv files
+.csv
+
+# data from crowdflower
+data/
+
+backup-old-data/
+
+csv/
