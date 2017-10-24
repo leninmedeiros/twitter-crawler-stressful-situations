@@ -112,3 +112,5 @@ data/
 backup-old-data/
 
 csv/
+
+.DS_Store
