@@ -1,0 +1,229 @@
+<!-- Bootstrap v3.0.3 --><script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script src="http://parsleyjs.org/dist/parsley.min.js"></script>
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="row col-xs-12 col-md-12">
+<!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading">
+  <!-- <strong>Instructions</strong> -->
+  <!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature -->
+  <a href="javascript:void(0);" id="collapseTrigger">
+    <strong>Instructions</strong> <span class="collapse-text">(Click to expand)</span>
+  </a>
+</div>
+
+<div class="panel-body" id="instructionBody" style="text-align: justify;">
+  Many people use Twitter nowadays to share their personal daily-life problems with their friends.
+  These problems may concern, for instance, work, health, death, relationships, finances, school, etc.
+  You will be presented a number of tweets and for each of them we want you to answer a few questions.
+  <p><p>You can check the 4 examples below.
+  <p>
+    <!-- Photo Grid -->
+  <div class="row">
+    <div class="column">
+      <img src="http://leninmedeiros.com/images/unavailable-tweet.png" width="540" height="270">
+    </div>
+    <div class="column">
+      <img src="http://leninmedeiros.com/images/relationships-tweet.png" width="540" height="270">
+    </div>
+    <div class="column">
+      <img src="http://leninmedeiros.com/images/other-tweet.png" width="540" height="270">
+    </div>
+    <div class="column">
+      <img src="http://leninmedeiros.com/images/useless-tweet.png" width="540" height="270">
+    </div>
+  </div>
+</div>
+</div>
+<!-- End Instructions -->
+<!-- Content Body -->
+<section>
+<div class="col-xs-12 col-sm-12 content"><label>Tweet:</label>
+
+<div class="well tweet-box"><input id="twitterOembed" type="hidden" value="${tweet_url}" /></div>
+</div>
+
+<fieldset><label>1. Can you read and understand this tweet? I.e., is it available and written in English?</label>
+
+<div class="radio"><label><input name="Q1Answer" onchange="setGeneralRequirements($(this).val())" required="" type="radio" value="yes" />Yes</label></div>
+
+<div class="radio"><label><input name="Q1Answer" onchange="setGeneralRequirements($(this).val())" required="" type="radio" value="no" />No</label></div>
+</fieldset>
+
+<fieldset><label>2. Would you classify this tweet as a description of a personal daily-life problem?</label>
+
+<div class="radio"><label><input id="radioButton3" name="Q2Answer" onchange="setRequirementCategorySelector($(this).val())" type="radio" value="yes" />Yes</label></div>
+
+<div class="radio"><label><input id="radioButton4" name="Q2Answer" onchange="setRequirementCategorySelector($(this).val())" type="radio" value="no" />No</label></div>
+</fieldset>
+
+<fieldset><label>3. To which category does the problem shared in the tweet belong? Select one option from the list below.</label> <select class="form-control" id="menuCategories" name="Q3Answer" onchange="setRequirementOtherTextField()" required="true"><option disabled="disabled" selected="selected" value="">- select one -</option><option value="death">Death</option><option value="finances">Finances</option>
+<option value="health">Health</option> <option value="relationships">Relationships</option><option value="school">School</option><option value="work">Work</option><option value="other">Other</option></select></fieldset>
+
+<fieldset>
+<div class="input-group"><label>4. If you answered &quot;Other&quot; above, what would be the name of the new category?</label> <input class="form-control" id="otherField" name="Q4Answer" required="" size="120" type="text" /></div>
+</fieldset>
+</section>
+<!-- End Content Body --></div>
+</section>
+
+<script type="text/javascript">
+ $('#mturk_form').parsley();
+</script><!-- close container -->
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.header {
+    text-align: center;
+    padding: 32px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+.column img {
+    margin-top: 12px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+<style type="text/css">fieldset {
+    padding: 10px;
+    background:#fbfbfb;
+    border-radius:5px;
+    margin-bottom:5px;
+}
+</style>
+<!-- End Categorization Layout --><!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries --><!-- External CSS references -->
+<style type="text/css">#collapseTrigger{
+  color:#fff;
+  display: block;
+  text-decoration: none;
+}
+#submitButton{
+  white-space: normal;
+}
+#instructionBody table{
+  font-size: 14px;
+  margin-top: 10px;
+}
+#instructionBody table caption{
+  text-align: left;
+  padding: 0 0 5px 0;
+}
+#Inputs{
+  display: block;
+}
+.content{
+  margin-bottom: 15px;
+}
+.radio:first-of-type{
+  margin-top: -5px;
+}
+.tweet-box.error{
+  border: 1px solid red;
+}
+</style>
+<!-- Close internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Open internal javascript --><script>
+  $(document).ready(function() {
+    console.log($('#menuCategories'))
+    // Instructions expand/collapse
+    var content = $('#instructionBody');
+    var trigger = $('#collapseTrigger');
+    content.hide();
+    $('.collapse-text').text('(Click to expand)');
+    trigger.click(function(){
+      content.toggle();
+      var isVisible = content.is(':visible');
+      if(isVisible){
+        $('.collapse-text').text('(Click to collapse)');
+      }else{
+        $('.collapse-text').text('(Click to expand)');
+      }
+    });
+    // end expand/collapse
+
+    // highlight selected category
+    var inputs = $("#Inputs input:radio");
+    inputs.change(function(){
+      inputs.parent().removeClass("btn-success");
+      inputs.parent().addClass("btn-default");
+      if($(this).is(":checked")){
+        $(this).parent().removeClass("btn-default");
+        $(this).parent().addClass("btn-success");
+      }else{
+        $(this).parent().removeClass("btn-success");
+        $(this).parent().addClass("btn-default");
+      }
+    });
+    // end highlight
+
+    // get Tweet using oembed
+    var url = $("#twitterOembed").val();
+    if (url==""){
+      $(".tweet-box").addClass("error");
+    }
+    else {
+      $.ajax({
+        url: "https://api.twitter.com/1/statuses/oembed.json?hide_thread=true&align=center&url="+url,
+        dataType: "jsonp",
+        success: function(data){
+          $(".tweet-box").html(data.html);
+        }
+      });
+    }
+    // end get Tweet
+  });
+
+function setRequirementOtherTextField() {
+// console.log("calling setRequirementOtherTextField()...");
+var dropDownList = document.getElementById("menuCategories");
+// console.log(dropDownList);
+// console.log("is dropDownList required? " + dropDownList.required);
+if (dropDownList.required) {
+var option =  dropDownList.options[dropDownList.selectedIndex].value;
+// console.log(option);
+document.getElementById("otherField").required = option == "other";
+} else {
+document.getElementById("otherField").required = false;
+}
+// console.log(document.getElementById("otherField").required);
+// console.log("exiting setRequirementOtherTextField()...");
+}
+
+function setGeneralRequirements(required) {
+// console.log("calling setGeneralRequirements(required)...");
+// console.log("required value passed as input = " + required);
+document.getElementById("radioButton3").required = required == "yes";
+// console.log("radioButton3.required = " + document.getElementById("radioButton3").required);
+document.getElementById("radioButton4").required = required == "yes";
+// console.log("radioButton4.required = " + document.getElementById("radioButton4").required);
+setRequirementCategorySelector(required);
+// console.log("exiting setGeneralRequirements(required)...");
+}
+
+function setRequirementCategorySelector(required) {
+// console.log("calling setRequirementCategorySelector(required)...");
+document.getElementById("menuCategories").required = required == "yes";
+// console.log("menuCategories.required = " + document.getElementById("menuCategories").required);
+setRequirementOtherTextField();
+// console.log("otherField.required = " + document.getElementById("otherField").required);
+// console.log("exiting setRequirementCategorySelector(required)...");
+}
+</script><!-- Close internal javascript -->
