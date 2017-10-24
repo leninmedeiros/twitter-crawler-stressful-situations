@@ -2,3 +2,7 @@
 twitter_consumer_key: <PUT YOUR TWITTER CONSUMER KEY HERE>
 [TwitterConsumerSecret]
 twitter_consumer_secret: <PUT YOUR TWITTER CONSUMER SECRET HERE>
+[TwitterAccessToken]
+twitter_access_token: <PUT YOUR ACCESS TOKEN HERE>
+[TwitterAccessTokenSecret]
+twitter_access_token_secret: <PUT YOUR ACCESS TOKEN SECRET HERE>
