@@ -119,7 +119,8 @@ OTHER_QUERIES = [OTHER_QUERIES_ONE, OTHER_QUERIES_TWO]
 #                   {'$set': {"tweet_pre_classification": 'relationships'}})
 
 tweets = db[db_name].tweets_raw
-tweets_sample = db[db_name].tweets_raw_sample
+input_data_exp2 = db[db_name].input_data_exp2
+resultant_data_exp1 = db[db_name].resultant_data_exp1
 # print("other >> " +
 #       str(tweets.find({"tweet_pre_classification": 'other'}).count()))
 #
@@ -183,98 +184,95 @@ tweets_sample = db[db_name].tweets_raw_sample
 #     except tweepy.TweepError as error:
 #         print(error.response.text)
 
-CATEGORIES = ["relationships", "work", "death", "finances", "health", "school",
-              "other"]
+CATEGORIES_EXP2 = ["relationships", "work", "death", "finances", "health",
+                   "school"]
 # sample size in percentage
 SAMPLE_SIZE = 0.08
 
-total_relationships = tweets.find(
-    {"tweet_pre_classification": 'relationships'}
+total_relationships = resultant_data_exp1.find(
+    {"tweet_classification": 'relationships'}
     ).count()
 
-total_work = tweets.find(
-    {"tweet_pre_classification": 'work'}
+total_work = resultant_data_exp1.find(
+    {"tweet_classification": 'work'}
     ).count()
 
-total_death = tweets.find(
-    {"tweet_pre_classification": 'death'}
+total_death = resultant_data_exp1.find(
+    {"tweet_classification": 'death'}
     ).count()
 
-total_finances = tweets.find(
-    {"tweet_pre_classification": 'finances'}
+total_finances = resultant_data_exp1.find(
+    {"tweet_classification": 'finances'}
     ).count()
 
-total_health = tweets.find(
-    {"tweet_pre_classification": 'health'}
+total_health = resultant_data_exp1.find(
+    {"tweet_classification": 'health'}
     ).count()
 
-total_school = tweets.find(
-    {"tweet_pre_classification": 'school'}
+total_school = resultant_data_exp1.find(
+    {"tweet_classification": 'school'}
     ).count()
 
-total_other = tweets.find(
-    {"tweet_pre_classification": 'other'}
+total_other = resultant_data_exp1.find(
+    {"tweet_classification": 'other'}
     ).count()
 
 TOTAL_COUNTERS = [total_relationships, total_work, total_death, total_finances,
-                  total_health, total_school, total_other]
+                  total_health, total_school]
 
 # for t in range(0, len(TOTAL_COUNTERS)):
 #     print(CATEGORIES[t] + " >>> " + str(TOTAL_COUNTERS[t]))
 
-for t in range(0, len(TOTAL_COUNTERS)):
-    print(CATEGORIES[t])
-    sample_size = round(TOTAL_COUNTERS[t]*SAMPLE_SIZE)
-    print(sample_size)
-    sample_ids = []
+# for t in range(0, len(TOTAL_COUNTERS)):
+#     print(CATEGORIES_EXP2[t])
+#     # sample_size = round(TOTAL_COUNTERS[t]*SAMPLE_SIZE)
+#     sample_size = 70
+#     print(sample_size)
+#     sample_ids = []
+#
+#     for t in resultant_data_exp1.find({"tweet_classification":
+#                                        CATEGORIES_EXP2[t]}):
+#         sample_ids.append(t["_id"])
+#
+#     sample_ids_size = len(sample_ids)
+#     random_indexes = []
+#
+#     for t in range(0, sample_size):
+#         random_index = random.randint(0, sample_ids_size - 1)
+#         while random_index in random_indexes:
+#             random_index = random.randint(0, sample_ids_size - 1)
+#         random_indexes.append(random_index)
+#         random_id = sample_ids[random_index]
+#         random_tweet = resultant_data_exp1.find_one({"_id": random_id})
+#         input_data_exp2.insert_one(random_tweet)
 
-    for t in tweets.find({"tweet_pre_classification": CATEGORIES[t]}):
-        sample_ids.append(t["_id"])
-
-    sample_ids_size = len(sample_ids)
-    random_indexes = []
-
-    for t in range(0, sample_size):
-        random_index = random.randint(0, sample_ids_size - 1)
-        while random_index in random_indexes:
-            random_index = random.randint(0, sample_ids_size - 1)
-        random_indexes.append(random_index)
-        random_id = sample_ids[random_index]
-        random_tweet = tweets.find_one({"_id": random_id})
-        tweets_sample.insert_one(random_tweet)
-
-total_relationships_sample = tweets_sample.find(
-    {"tweet_pre_classification": 'relationships'}
+total_relationships_sample = input_data_exp2.find(
+    {"tweet_classification": 'relationships'}
     ).count()
 
-total_work_sample = tweets_sample.find(
-    {"tweet_pre_classification": 'work'}
+total_work_sample = input_data_exp2.find(
+    {"tweet_classification": 'work'}
     ).count()
 
-total_death_sample = tweets_sample.find(
-    {"tweet_pre_classification": 'death'}
+total_death_sample = input_data_exp2.find(
+    {"tweet_classification": 'death'}
     ).count()
 
-total_finances_sample = tweets_sample.find(
-    {"tweet_pre_classification": 'finances'}
+total_finances_sample = input_data_exp2.find(
+    {"tweet_classification": 'finances'}
     ).count()
 
-total_health_sample = tweets_sample.find(
-    {"tweet_pre_classification": 'health'}
+total_health_sample = input_data_exp2.find(
+    {"tweet_classification": 'health'}
     ).count()
 
-total_school_sample = tweets_sample.find(
-    {"tweet_pre_classification": 'school'}
-    ).count()
-
-total_other_sample = tweets_sample.find(
-    {"tweet_pre_classification": 'other'}
+total_school_sample = input_data_exp2.find(
+    {"tweet_classification": 'school'}
     ).count()
 
 TOTAL_COUNTERS_SAMPLE = [total_relationships_sample, total_work_sample,
                          total_death_sample, total_finances_sample,
-                         total_health_sample, total_school_sample,
-                         total_other_sample]
+                         total_health_sample, total_school_sample]
 
 for t in range(0, len(TOTAL_COUNTERS_SAMPLE)):
-    print(CATEGORIES[t] + " >>> " + str(TOTAL_COUNTERS_SAMPLE[t]))
+    print(CATEGORIES_EXP2[t] + " >>> " + str(TOTAL_COUNTERS_SAMPLE[t]))
